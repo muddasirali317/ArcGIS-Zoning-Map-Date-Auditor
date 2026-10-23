@@ -1,0 +1,33 @@
+# Render blueprint for the Zoning Map Date Auditor backend (Fastify API).
+# Deploy: push this repo to GitHub, then Render Dashboard -> New -> Blueprint -> pick this repo.
+services:
+  - type: web
+    name: zoning-auditor-api
+    runtime: node
+    plan: starter # "free" works too, but FREE HAS NO PERSISTENT DISK -> the SQLite DB resets on each deploy/restart. Use starter+ (and the disk below) to keep audit data.
+    # Node 22+ is required for the built-in node:sqlite module.
+    # --include=dev is needed because the start command runs via tsx (a devDependency) and Render builds with NODE_ENV=production.
+    buildCommand: npm install --include=dev
+    startCommand: npm run start -w @zoning/server
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: HOST
+        value: 0.0.0.0
+      - key: DB_PATH
+        value: /data/auditor.db
+      # PORT is provided by Render automatically; the server reads it from the environment.
+      #
+      # Optional — only needed for Google Sheet sign-in / write-back. Add these in the
+      # Render dashboard (Environment tab) rather than committing secrets:
+      # - key: GOOGLE_CLIENT_ID
+      #   sync: false
+      # - key: GOOGLE_CLIENT_SECRET
+      #   sync: false
+      # - key: GOOGLE_REDIRECT_URI
+      #   value: https://zoning-auditor-api.onrender.com/api/auth/google/callback
+    disk:
+      name: auditor-data
+      mountPath: /data
+      sizeGB: 1
