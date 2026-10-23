@@ -742,7 +742,7 @@ export async function checkMap(row: CheckRow, deps: EngineDeps): Promise<CheckRe
   let failure: Failure | null = null;
   let analysis: Analysis | null = null;
 
-  if (!norm.ok) {
+  if (norm.ok === false) {
     failure = new Failure(norm.code, norm.reason);
   } else if (deps.breaker?.isOpen(norm.host)) {
     failure = new Failure('HOST_UNREACHABLE', deps.breaker.describe(norm.host));
