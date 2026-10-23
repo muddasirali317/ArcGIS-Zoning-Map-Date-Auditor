@@ -1,4 +1,6 @@
-# Zoning Map Date Auditor (Phase 3)
+# ArcGIS Zoning Map Date Auditor
+
+Check ArcGIS zoning maps for dates, review status, and service issues. Paste a Google Sheet link to audit its map URLs, inspect maps on an interactive viewer, track reviews, and export results.
 
 Reads a Google Sheet of ArcGIS map links, checks every endpoint, shows each map's date, review date, status and failure reason, lets you review the maps one by one, and exports CSVs (or writes the results back to the sheet).
 
