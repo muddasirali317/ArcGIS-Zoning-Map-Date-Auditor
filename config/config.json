@@ -1,0 +1,27 @@
+{
+  "dateFieldNames": [
+    "DateModified", "Date_Modified", "LastModified", "Last_Modified",
+    "LastEditDate", "Last_Edit_Date", "EditDate", "Edit_Date",
+    "ModifiedDate", "Modified_Date", "LastUpdate", "Last_Update",
+    "LastUpdated", "Last_Updated", "UpdateDate", "Update_Date",
+    "UpdatedDate", "Updated_Date", "DateUpdated", "Date_Updated",
+    "LastEdited", "Last_Edited", "LastEdit", "Last_Edit",
+    "Date_Effective", "DateEffective",
+    "DateEdited", "Date_Edited", "LastDateEdited", "Last_Date_Edited",
+     "DATEUPDATE", "last_edit_dte",
+     "LastEditedDate", "Last_Edited_Date"
+  ],
+  "dateSelection": "priority",
+  "breakerThreshold": 25,
+  "maxResolvedServices": 3,
+  "datePriority": ["attribute", "editingInfo", "serviceProperty", "portalItem"],
+  "concurrency": { "global": 20, "perHost": 3 },
+  "timeouts": { "connectMs": 30000, "totalMs": 120000 },
+  "retries": { "max": 5, "baseDelayMs": 2000, "maxDelayMs": 30000 },
+  "maxResponseBytes": 5242880,
+  "cacheTtlHours": 24,
+  "maxLayersPerMap": 25,
+  "layerKeywords": ["zoning", "zone", "district", "overlay", "land use", "landuse"],
+  "freshness": { "greenYears": 1, "yellowYears": 3, "orangeYears": 5 },
+  "sentinelDates": ["1899-12-30", "1900-01-01", "1970-01-01"]
+}
